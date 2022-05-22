@@ -13,6 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Car extends Model
 {
+    /** @var string[] */
     protected $fillable = ['make', 'model', 'year'];
+
+    /** @var string[] */
     protected $hidden = ['user_id', 'created_at', 'updated_at'];
+
+    public function trips()
+    {
+        return $this->hasMany('App\Models\Trip');
+    }
 }

@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Trip extends Model
 {
+    /** @var string[] */
     protected $fillable = ['date', 'car_id', 'miles'];
+
+    /** @var string[] */
     protected $hidden = ['created_at', 'updated_at'];
 }

@@ -14,6 +14,10 @@ class DataConvertHelper
      */
     public static function stdClassToArray(stdClass $data): array
     {
+        if (empty($data)) {
+            return [];
+        }
+
         return json_decode(json_encode($data), true);
     }
 
@@ -24,6 +28,10 @@ class DataConvertHelper
      */
     public static function jsonableToArray($data): array
     {
+        if (empty($data)) {
+            return [];
+        }
+
         return json_decode($data->toJson(), true);
     }
 }

@@ -26,7 +26,12 @@ class CommandCarService
      */
     public function destroy(int $userId, int $carId)
     {
-        (new CommandTripService())->destroyByCarId($carId);
-        Car::where('user_id', $userId)->where('id', $carId)->delete();
+        $userCar = Car::where('user_id', $userId)->where('id', $carId)->first();
+        if (empty($userCar)) {
+            return;
+        }
+
+        $userCar->trips()->delete();
+        $userCar->delete();
     }
 }

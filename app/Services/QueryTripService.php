@@ -30,6 +30,7 @@ class QueryTripService
             cars.model as car_model,
             cars.year as car_year')
             ->where('cars.user_id', '=', $userId)
+            ->orderBy('trips.date', 'desc')
             ->get();
 
         $tripsWithCarData = DataConvertHelper::jsonableToArray($tripsWithCarData);
